@@ -271,12 +271,12 @@ i3:hover { filter: brightness(1.2) }
 
 #leftArea {
 	position: fixed; left: 0; top: 0;
-	width: calc(3vmin + 3vh); height: 100vh;
+	width: calc(3vmin + 3vh); height: 100%;
 }
 #leftArea:hover #leftPanel { display: flex }
 #leftPanel {
 	position: fixed; left: 0; top: 5vmin;
-	height: calc(100vh - 10vmin);
+	height: calc(100% - 10vmin);
 	width: var(--panelWidth); overflow-y: scroll;
 	border-radius: 0 var(--rounding) var(--rounding) 0;
 	background: var(--aBgSub); display: none;

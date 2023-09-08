@@ -41,12 +41,20 @@
 }
 ::selection { color: var(--a) }
 ::-moz-selection { color: var(--a) }
-html { scrollbar-width: none; scroll-padding-top: 10vmin; overflow-y: scroll }
+html {
+	height: fill-available;
+	height: -webkit-fill-available;
+	scrollbar-width: none;
+	scroll-padding-top: 10vmin;
+	overflow-y: scroll
+}
 body {
 	font: var(--fMain); line-height: 1.2;
 	position: relative; color: var(--aFont);
 	background-color: var(--aBg);
 	width: 100vw; height: 100vh;
+	max-height: fill-available;
+	max-height: -webkit-fill-available;
 	margin: 0; overscroll-behavior-x: none;
 	overflow: hidden; overflow-x: hidden;
 	overflow-y: scroll; z-index: -10;

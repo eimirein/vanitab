@@ -471,8 +471,6 @@ function init() {
 
 var settings
 window.onload = function() { init()
-	emi('body').style.height = window.innerHeight+'px'
-
 	// Deploy userdata if none
 	if (!ls('settings')) {
 		settings = {

@@ -42,23 +42,26 @@
 ::selection { color: var(--a) }
 ::-moz-selection { color: var(--a) }
 html {
+	height: 100vh; width: 100vw;
 	height: fill-available;
 	height: -webkit-fill-available;
 	scrollbar-width: none;
 	scroll-padding-top: 10vmin;
-	overflow-y: scroll
+	overflow-y: scroll;
 }
 body {
 	font: var(--fMain); line-height: 1.2;
 	position: relative; color: var(--aFont);
 	background-color: var(--aBg);
-	width: 100vw; height: 100vh;
-	max-height: fill-available;
-	max-height: -webkit-fill-available;
+	width: 100%; height: 100%;
 	margin: 0; overscroll-behavior-x: none;
 	overflow: hidden; overflow-x: hidden;
 	overflow-y: scroll; z-index: -10;
 	backface-visibility: hidden;
+	padding: env(safe-area-inset-top, 20px) 
+	env(safe-area-inset-right, 20px) 
+	env(safe-area-inset-bottom, 20px) 
+	env(safe-area-inset-left, 20px);
 	background-image: url('assets/bg.jpeg')
 }
 sel { color: var(--a) }
@@ -138,11 +141,6 @@ input { white-space: nowrap }
 	background: var(--aBg); color: var(--aFont);
 	border-color: var(--aBorder);
 }
-.cBtn {
-	background: var(--aBorder); color: var(--aFont);
-	border-color: var(--aBorder);
-}
-.cBtn:hover { background: var(--aBgHov); color: var(--aFontHov) }
 c { color: var(--a) }
 #popupNotification { animation: fall 0.4s, shrink 0.3s linear 3s forwards }
 .va2hint {
@@ -152,6 +150,12 @@ c { color: var(--a) }
 	width: 60vmin; z-index: 20;
 	font: var(--fHint); font-weight: 400;
 	border-radius: 1em; text-align: center;
+}
+.gcse-search {
+	display: block; margin: 2vh auto;
+	background: var(--aBg);
+	border-radius: var(--rounding);
+	width: 60%; height: 10%;
 }
 
 /* RSS feeds */

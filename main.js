@@ -7,6 +7,7 @@ const temp = []
 const assets = []
 
 function emi(id) { if (document.getElementById(id)) { return document.getElementById(id) } }
+function qem(id, tag) { if (document.getElementById(id)) { return emi(id).querySelectorAll(tag) } }
 // Loop through a class using --> for (let v of classes('classname')) { ... }
 function classes(_class) { if (document.getElementsByClassName(_class)) { return document.getElementsByClassName(_class) } }
 function percent(this_num, of_the) { return Math.round( (100 * this_num) / of_the ) }
@@ -29,6 +30,8 @@ function fullscreen() {
 		notify(assets[lang].va2notif[2])
 	}
 }
+// Reload page
+function R() { location.reload() }
 // Print any data in the console and the element with id ["console"]
 function print(...data) {
 	let em = emi('console')
@@ -99,6 +102,9 @@ function ls(id, val) {
 	}
 	else if (id) { return window.localStorage.getItem(id) }
 	else { window.localStorage.clear(); location.reload() }
+	if (emi('userdata') && settings) {
+		emi('userdata').value = JSON.stringify(settings)
+	}
 }
 // Set a global CSS letiable
 function pattern(CSSVar, val) { document.documentElement.style.setProperty('--'+CSSVar, val) }
@@ -174,27 +180,24 @@ let lang; let i_lang = -1
 function langs_Userset() {
 	if (lang=='en') {
 		if (emi('lang')) { emi('lang').innerHTML = 'English' }
-		for (let v of classes('saveBtn')) {
-			v.innerHTML = "Save"
-		}
+		for (let v of classes('saveBtn')) { v.innerHTML = 'Save' }
+		for (let v of classes('loadBtn')) { v.innerHTML = 'Load' }
 		emi('tileName').placeholder = 'Bookmark name'
 		emi('tileUrl').placeholder = 'Bookmark address (URL)'
 	}
 
 	if (lang=='jp') {
 		if (emi('lang')) { emi('lang').innerHTML = '日本語' }
-		for (let v of classes('saveBtn')) {
-			v.innerHTML = "保存する"
-		}
+		for (let v of classes('saveBtn')) { v.innerHTML = '保存する' }
+		for (let v of classes('loadBtn')) { v.innerHTML = '読み込む' }
 		emi('tileName').placeholder = 'ブックマーク名'
 		emi('tileUrl').placeholder = 'ブックマークアドレス（URL）'
 	}
 
 	if (lang=='ru') {
 		if (emi('lang')) { emi('lang').innerHTML = 'Русский' }
-		for (let v of classes('saveBtn')) {
-			v.innerHTML = "Сохранить"
-		}
+		for (let v of classes('saveBtn')) { v.innerHTML = 'Сохранить' }
+		for (let v of classes('loadBtn')) { v.innerHTML = 'Загрузить' }
 		emi('tileName').placeholder = 'Имя закладки'
 		emi('tileUrl').placeholder = 'Адрес закладки (URL)'
 		
@@ -263,7 +266,7 @@ function curl(url) {
 	anchor.parentNode.removeChild(anchor)
 }
 // Create and download a file from string
-function doFile(str_filename, str_filedata) {
+function doFile(str_name, str_data) {
 	let link = document.createElement('a');
 	link.download = str_name;
 	let blob = new Blob([str_data], {type: 'text/plain'});
@@ -337,7 +340,13 @@ function notify(msg_html) {
 	} else { log(`notify :: Element with id [${id}] does not exist`, 1) }
 }
 function iframe(url) {
-	let template = `<div id='i-${url}' class='fill tabFrame'> <iframe src='${url}' class='fill'></iframe> <div class='center' onclick="rm('i-${url}')"><p class='material-symbols-outlined'>close</p></div> </div>`
+	let template = `
+	<div id='i-${url}' class='fill tabFrame center'>
+		<iframe src='${url}' class='fill'></iframe>
+		<div class='center nosel' onclick="rm('i-${url}')">
+			<p class='material-symbols-outlined'>close</p>
+		</div>
+	</div>`
 	mk('body', template)
 	if (lang==='en') {
 		notify('If webpage did not respond - it does not support embedding.')
@@ -367,9 +376,9 @@ function tile(url, name) {
 				<div class='tileThumb' style='background-image: url("https://s2.googleusercontent.com/s2/favicons?domain_url=${url}")'></div>
 				<div class='tileName nosel'>${name}</div>
 				<div class='fill tileControls'>
-					<i1><iX class='material-symbols-outlined' onclick="tile('${url}', 0)">close</iX></i1>
-					<i2><iX class='material-symbols-outlined' onclick="iframe('${url}')">fullscreen</iX></i2>
-					<i3><iX class='material-symbols-outlined' onclick="href('${url}', 1)">open_in_new</iX></i3>
+					<i1><iX class='material-symbols-outlined' onclick="tile('${url}', 0); hide('tileGrid')">close</iX></i1>
+					<i2><iX class='material-symbols-outlined' onclick="iframe('${url}'); hide('tileGrid')">fullscreen</iX></i2>
+					<i3><iX class='material-symbols-outlined' onclick="href('${url}', 1); hide('tileGrid')">open_in_new</iX></i3>
 				</div>
 			</div>`
 
@@ -478,6 +487,7 @@ window.onload = function() { init()
 	}
 	
 	// Load local userdata
+	emi('userdata').value = JSON.stringify(settings)
 	emi('cityID').value = settings.cityID
 	pattern('tileSize', settings.tileSize)
 	emi('tileSize').value = settings.tileSize
@@ -493,7 +503,6 @@ window.onload = function() { init()
 	
 	tile()
 	
-	/*
 	// [manifest.json] PWA Service Worker
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('./serviceworker.js')
@@ -505,7 +514,6 @@ window.onload = function() { init()
 		console.log('ServiceWorker registration failed: ', err)
 		})
 	}
-	*/
 	
 	setInterval(function () {
 		emi('va2time').innerHTML = time()

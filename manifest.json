@@ -1,0 +1,42 @@
+{
+	"display": "standalone",
+	"id": "eimirein_vanitab",
+	"start_url": "./",
+	"scope": ".",
+	"short_name": "Va2:Tab",
+	"name": "VA二l lA Project: VaniTab",
+	"description": "VaniTab (Va2:Tab) - A branch originated from VA二l lA Project, represents a customizable and feature-rich new tab (start page) for your browser.",
+	"background_color": "#333",
+	"theme_color": "#333",
+	"prefer_related_applications": true,
+	"icons": [
+		{
+			"src": "assets/icons/icon.ico",
+			"sizes": "64x64"
+		},
+		{
+			"src": "assets/icons/icon192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "assets/icons/icon512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "assets/images/preview.webp",
+			"type": "image/webp",
+			"sizes": "1365x767",
+			"form_factor": "wide"
+		},
+		{
+			"src": "assets/images/previewMobile.webp",
+			"type": "image/webp",
+			"sizes": "767x1365",
+			"form_factor": "narrow"
+		}
+	]
+}

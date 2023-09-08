@@ -1,0 +1,112 @@
+<!DOCTYPE html> <html id='html' lang='en' dir='ltr'>
+	<head id='core'> <meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, viewport-fit=cover'>
+		<meta name='theme-color' media='(prefers-color-scheme: dark)'  content='black'>
+		<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>
+		<meta name="google-site-verification" content="UnW-dXEiEnHQdRaDbB0Y3SuYRY-hoyoJNNZIN-3Pi2A" />
+		<!-- SEO Core Metadata -->
+		<link rel='canonical' href='https://eimirein.github.io/vanitab/index.html'>
+		<title id='title0'>Va2:Tab</title>
+		<meta name='description' content='VaniTab - A customizable and feature-rich browser start page utility. 
+		Allows you to create personalized experience for the "New Tab" page in your browser.'>
+		<meta name='keywords' content='eimirein, tab, new tab, start page, browser utils'>
+		<meta name='author' content='Eimi Rein (霊音・永旻)'>
+		<link rel='author' href='https://github.com/eimirein'>
+		<meta name='robots' content='index, follow, archive, noimageindex'>
+		<!-- SEO Social Media Cards -->
+		<meta name='twitter:card' content='summary'>
+		<meta name='twitter:creator' content='@reinyuoko'>
+		<meta property='og:url' content='https://eimirein.github.io/vanitab'>
+		<meta property='og:title' content='VaniTab by Eimi Rein (霊音・永旻)'>
+		<meta property='og:description' content='A customizable and feature-rich browser start page utility. 
+		Allows you to create personalized experience for the "New Tab" page in your browser.'>
+		<meta property='og:image' content='https://eimirein.github.io/vanitab/assets/images/preview.webp'>
+		<!-- Core Modules -->
+		<link rel='icon' type='image/x-icon' href='assets/icons/icon.ico'>
+		<link rel='stylesheet' href='style.css'>
+		<script src='main.js' defer></script>
+		<script src='lang.js' defer></script>
+		<!-- Google icons -->
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' />
+		<!-- Twemoji <3 -->
+		<script src='https://twemoji.maxcdn.com/v/latest/twemoji.min.js' crossorigin='anonymous' defer></script>
+		<style> img.emoji { width: 1em; pointer-events: none } </style>
+	</head>
+
+	<body id='body' class='center bounded' tabIndex=0 onclick>
+		<div id='popupNotification' class='c va2hint nosel nil'></div>
+		<div id='timedate' class='nosel nil'> <p id='va2time'></p> <p id='va2date'></p> <p id='va2pass'></p> </div>
+		<div id='weatherAPI' class='center nosel nil'></div>
+		<div id='dialoguePopup' class='center fill nosel' style='z-index: 99; display: none'>
+			<div class='fill' style='background: #0003; backdrop-filter: blur(1vh)' onclick="hide('dialoguePopup')"></div>
+			<div id='dialogue' class='center popup bounded'>
+				<cap class='center'><p id='popup0'></p></cap>
+				<msg class='c center'><p id='popup1'></p></msg>
+				<div class='i center' style='width: 100%'>
+					<input id='tileName' type='textarea' class='c input' />
+					<input id='tileUrl' type='textarea' class='c input' />
+				</div>
+				<div class='btn center nosel' onclick="tile(emi('tileUrl').value, emi('tileName').value); hide('dialoguePopup')"><p class='saveBtn'>Save</p></div>
+				<div class='break'></div>
+			</div>
+		</div>
+
+		<div class='center fill'><div id='tileBox' class='center bounded nosel' onmouseover="show('tileGrid',1)" onmouseout="hide('tileGrid')">
+			<div id='tileGrid' class='i center'>
+				<div class='tabTile center' onclick="show('dialoguePopup',1); emi('tileUrl').value='https://'"><p class='material-symbols-outlined'>add</p></div>
+			</div>
+		</div></div>
+
+		<div id='leftArea' class='nosel'>
+			<div id='leftPanel' class='center bounded'>
+
+				<div class='c li center'>
+					<div class='btn center' onclick="fullscreen()" style='width: 60%'><p id='menu0'></p></div>
+				</div>
+
+				<div class='c li center'>
+					<p id='menu1'></p>
+					<p class='ref' onclick="href('https://openweathermap.org', 1)">openweathermap</p>
+					<field>
+						<input id='cityID' type='textarea' class='c input' />
+						<div class='center' onclick="udata('cityID', emi('cityID').value); openweather()"><p class='saveBtn'>Save</p></div>
+					</field>
+				</div>
+
+				<div class='c li center'>
+					<p id='menu4'></p>
+					<field>
+						<input id='tileSize' type='textarea' class='c input' />
+						<div class='center' onclick="pattern('tileSize', emi('tileSize').value); udata('tileSize', emi('tileSize').value)"><p class='saveBtn'>Save</p></div>
+					</field>
+				</div>
+
+				<div class='c li center'>
+					<p id='menu5'></p>
+					<field>
+						<input id='rounding' type='textarea' class='c input' />
+						<div class='center' onclick="pattern('rounding', emi('rounding').value+'vh'); udata('rounding', emi('rounding').value)"><p class='saveBtn'>Save</p></div>
+					</field>
+				</div>
+
+				<div class='c li center'>
+					<p id='menu8' style='width: 90%'></p>
+					<div class='btn center' onclick="udata('theme', 0); theme(0)"><p id='theme0'></p></div>
+					<div class='btn center' onclick="udata('theme', 1); theme(1)"><p id='theme1'></p></div>
+				</div>
+
+				<div class='c li center'>
+					<p id='menu9'></p>
+					<div class='btn center' onclick="langs(); udata('language', emi('html').lang)"><p id='lang'></p></div>
+				</div>
+
+				<div class='c li center'>
+					<div class='btn center' onclick="ls()" style='width: 60%; color: crimson; font-weight: 600'><p id='menu10'></p></div>
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+
+</html>

@@ -471,6 +471,8 @@ function init() {
 
 var settings
 window.onload = function() { init()
+	emi('body').style.height = window.innerHeight
+
 	// Deploy userdata if none
 	if (!ls('settings')) {
 		settings = {
@@ -485,7 +487,7 @@ window.onload = function() { init()
 	} else {
 		settings = ls('settings', 1)
 	}
-	
+
 	// Load local userdata
 	emi('userdata').value = JSON.stringify(settings)
 	emi('cityID').value = settings.cityID
@@ -494,15 +496,15 @@ window.onload = function() { init()
 	pattern('rounding', settings.rounding+'vh')
 	emi('rounding').value = settings.rounding
 	theme(settings.theme)
-	
+
 	langs(settings.language); openweather()
-	
+
 	if (lang=='en') { notify('Welcome! Point on the left side to open settings.') }
 	if (lang=='jp') { notify('いらっしゃいませ！ 左側をポイントして設定を開きます。') }
 	if (lang=='ru') { notify('Добро пожаловать! Отведите курсор влево чтобы открыть настройки.') }
-	
+
 	tile()
-	
+
 	// [manifest.json] PWA Service Worker
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('./serviceworker.js')
@@ -514,7 +516,7 @@ window.onload = function() { init()
 		console.log('ServiceWorker registration failed: ', err)
 		})
 	}
-	
+
 	setInterval(function () {
 		emi('va2time').innerHTML = time()
 		emi('va2date').innerHTML = date()

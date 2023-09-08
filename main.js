@@ -343,7 +343,7 @@ function iframe(url) {
 	let template = `
 	<div id='i-${url}' class='fill tabFrame center'>
 		<iframe src='${url}' class='fill'></iframe>
-		<div class='center nosel' onclick="rm('i-${url}')">
+		<div class='center nosel' onclick="rm('i-${url}'); hide('tileGrid')">
 			<p class='material-symbols-outlined'>close</p>
 		</div>
 	</div>`
@@ -377,7 +377,7 @@ function tile(url, name) {
 				<div class='tileName nosel'>${name}</div>
 				<div class='fill tileControls'>
 					<i1><iX class='material-symbols-outlined' onclick="tile('${url}', 0); hide('tileGrid')">close</iX></i1>
-					<i2><iX class='material-symbols-outlined' onclick="hide('tileGrid'); iframe('${url}')">fullscreen</iX></i2>
+					<i2><iX class='material-symbols-outlined' onclick="iframe('${url}')">fullscreen</iX></i2>
 					<i3><iX class='material-symbols-outlined' onclick="href('${url}', 1)">open_in_new</iX></i3>
 				</div>
 			</div>`

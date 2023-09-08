@@ -59,10 +59,6 @@ body {
 	overflow: hidden; overflow-x: hidden;
 	overflow-y: scroll; z-index: -10;
 	backface-visibility: hidden;
-	padding: env(safe-area-inset-top, 20px) 
-	env(safe-area-inset-right, 20px) 
-	env(safe-area-inset-bottom, 20px) 
-	env(safe-area-inset-left, 20px);
 	background-image: url('assets/bg.jpeg')
 }
 sel { color: var(--a) }

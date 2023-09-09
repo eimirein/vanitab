@@ -233,7 +233,7 @@ item {
 	width: calc((5vh + 5vmin) * var(--tileSize));
 	height: calc((5vh + 5vmin) * var(--tileSize));
 	border-radius: calc(var(--rounding) * 1.3);
-	border: 2px solid var(--aBg); z-index: 9;
+	border: 2px solid var(--aBg); z-index: 7;
 	backdrop-filter: blur(1vh);
 	position: relative; display: flex;
 	flex-wrap: wrap; justify-content: center
@@ -248,7 +248,7 @@ item {
 	border-radius: var(--rounding);
 	background-color: var(--aBgSub);
 	color: var(--aFont); margin: auto;
-	flex-direction: column;
+	flex-direction: column; z-index: 9
 }
 .tabTile:hover { background-color: var(--aBg); color: var(--aFontHov) }
 .tabTile p, span {

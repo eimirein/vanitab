@@ -1,6 +1,7 @@
 lang_list = ['en', 'jp', 'ru']
 
 assets.en = {
+	title: ['Va2:Tab'],
 	menu: {
 	0: `Fullscreen mode`,
 	1: `Your city ID<br><x style='font: var(--fSmall)'>Please navigate to:</x>`,
@@ -41,6 +42,7 @@ assets.en = {
 }
 
 assets.jp = {
+	title: ['Va2:Tab'],
 	menu: {
 	0: `全画面`,
 	1: `あなたの都市ID<br><x style='font: var(--fSmall)'>次のURLにアクセスしてください：</x>`,
@@ -81,6 +83,7 @@ assets.jp = {
 }
 
 assets.ru = {
+	title: ['Va2:Tab'],
 	menu: {
 	0: `Полноэкранный режим`,
 	1: `ID Вашего города<br><x style='font: var(--fSmall)'>Пожалуйста перейдите на:</x>`,

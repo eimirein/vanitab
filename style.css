@@ -53,6 +53,9 @@ body {
 	width: 100%; height: 100%;
 	color: var(--aFont);
 	background-color: var(--aBg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 	overscroll-behavior-x: none;
 	overflow: hidden; overflow-x: hidden;
 	overflow-y: scroll; z-index: -10;
@@ -106,13 +109,11 @@ input { white-space: nowrap }
 	margin: 0; padding: 0
 }
 .bgFill {
-	position: relative;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 .bgCont {
-	position: relative;
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;

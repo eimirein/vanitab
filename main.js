@@ -186,7 +186,7 @@ function langs_Userset() {
 	if (lang=='en') {
 		if (emi('lang')) { emi('lang').innerHTML = 'English' }
 		for (let v of classes('saveBtn')) { v.innerHTML = 'Save' }
-		for (let v of classes('loadBtn')) { v.innerHTML = 'Load' }
+		for (let v of classes('loadBtn')) { v.innerHTML = 'Apply' }
 		emi('tileName').placeholder = 'Bookmark name'
 		emi('tileUrl').placeholder = 'Bookmark address (URL)'
 	}
@@ -194,7 +194,7 @@ function langs_Userset() {
 	if (lang=='jp') {
 		if (emi('lang')) { emi('lang').innerHTML = '日本語' }
 		for (let v of classes('saveBtn')) { v.innerHTML = '保存する' }
-		for (let v of classes('loadBtn')) { v.innerHTML = '読み込む' }
+		for (let v of classes('loadBtn')) { v.innerHTML = '応募する' }
 		emi('tileName').placeholder = 'ブックマーク名'
 		emi('tileUrl').placeholder = 'ブックマークアドレス（URL）'
 	}
@@ -202,7 +202,7 @@ function langs_Userset() {
 	if (lang=='ru') {
 		if (emi('lang')) { emi('lang').innerHTML = 'Русский' }
 		for (let v of classes('saveBtn')) { v.innerHTML = 'Сохранить' }
-		for (let v of classes('loadBtn')) { v.innerHTML = 'Загрузить' }
+		for (let v of classes('loadBtn')) { v.innerHTML = 'Применить' }
 		emi('tileName').placeholder = 'Имя закладки'
 		emi('tileUrl').placeholder = 'Адрес закладки (URL)'
 		

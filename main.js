@@ -492,7 +492,9 @@ function init() {
 			
 		}
 	)
-	
+	if (!CSS.supports('height: 100dvh')) {
+		pattern('deviceHeight', window.innerHeight+'px')
+	}
 }
 
 var settings = {

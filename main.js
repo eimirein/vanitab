@@ -108,7 +108,7 @@ function ls(id, val) {
 }
 // Set a global CSS letiable
 function pattern(CSSVar, val) { document.documentElement.style.setProperty('--'+CSSVar, val) }
-// Delete elements / Create elements from string
+// Remove elements
 function rm(...ids) {
 	ids.forEach(function(id) {
 		if ( emi(id) ) {
@@ -116,14 +116,19 @@ function rm(...ids) {
 		} else { log('rm :: Element with id ['+id+'] does not exist', 1) }
 	})
 }
-function mk(root_id, html_or_array) {
+// Make one or more elements in the selected root element; [data == html/object/element]
+function mk(root_id, data) {
 	let root = emi(root_id)
 	if ( root ) {
-		if ( typeof html_or_array === 'object' ) {
-			for (let index in html_or_array) {
-				root.innerHTML = root.innerHTML + html_or_array[index]
+		if (typeof data === 'object') {
+			for (let i in data) {
+				root.innerHTML = root.innerHTML + data[i]
 			}
-		} else { root.innerHTML = root.innerHTML + html_or_array }
+		} else if (typeof data === 'string') {
+			root.innerHTML = root.innerHTML + data
+		} else {
+			root.appendChild(data)
+		}
 	} else { log('mk :: Root element with id ['+root_id+'] does not exist', 1) }
 }
 // Show/hide an element (display)
@@ -363,6 +368,25 @@ function twemojiParse() {
 		twemoji.parse(document.documentElement, {folder: 'svg', ext: '.svg'})
 	}
 }
+var links = {}
+function linkEmbed(root_id, url) {
+	fetch('https://api.linkpreview.net/?key=94c58b8c0c040e83a680020f8da01141&q='+url)
+	.then(raw => raw.text())
+	.then(json => {
+		let data = JSON.parse(json)
+		let template = `
+		<div id='embed-${url}' class='linkEmbed center c' onclick="href('${url}',1)">
+			<h2>${data.title}</h2>
+			<a class='text ref'>${data.url}</a>
+			<img class='nosel nil' src='${data.image}' alt='(preview)'>
+			<p>${data.description}</p>
+		</div>`
+		mk(root_id, template)
+		links[root_id] = template
+		ls('embeds', links)
+		print('URL embed cached: '+url)
+	})
+}
 
 /// Local functions ///
 function udata(key, val) {
@@ -412,7 +436,8 @@ function tile(url, name) {
 
 function theme(binary) {
 	if (binary == 0) { // Bright
-		pattern('a', '#e76')
+		pattern('a', '#f35')
+		pattern('aSub', '#47b')
 		pattern('aFont', '#777')
 		pattern('aFontSub', '#ccc')
 		pattern('aFontHov', '#444')
@@ -423,6 +448,7 @@ function theme(binary) {
 		pattern('aBorder', '#eee')
 	} else { // Dark
 		pattern('a', '#fb6')
+		pattern('aSub', '#c56')
 		pattern('aFont', '#999')
 		pattern('aFontSub', '#555')
 		pattern('aFontHov', '#ccc')
@@ -469,21 +495,23 @@ function init() {
 	
 }
 
-var settings
+var settings = {
+	cityID: '1850144',
+	tileSize: 1.5,
+	rounding: 2,
+	language: 'en',
+	theme: 0,
+	tiles: {/* url: name_or_nil, */},
+}
 window.onload = function() { init()
 	// Deploy userdata if none
 	if (!ls('settings')) {
-		settings = {
-			cityID: '1850144',
-			tileSize: 1.5,
-			rounding: 2,
-			language: 'en',
-			theme: 0,
-			tiles: {/* url: name_or_nil, */},
-		}
+		linkEmbed('version', 'https://github.com/eimirein')
 		ls('settings', settings)
 	} else {
 		settings = ls('settings', 1)
+		links = ls('embeds', 1)
+		for (const [i,v] of Object.entries(links)) { mk(i,v) }
 	}
 
 	// Load local userdata

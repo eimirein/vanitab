@@ -17,7 +17,7 @@
 :root {
 	/* Color accent */
 	--a: #fb6;
-	--aSub: #8C6A4E;
+	--aSub: #a75;
 	--aBg: #fff;
 	--aBgSub: #fffd;
 	--aBgHov: #ddd;
@@ -64,6 +64,7 @@ body {
 }
 sel { color: var(--a) }
 div { position: relative }
+h1, h2, h3, h4 { all: unset; display: block; margin: 0 }
 iframe { border: none; outline: none; border-radius: var(--rounding) }
 input { white-space: nowrap }
 
@@ -115,7 +116,7 @@ input { white-space: nowrap }
 	background-repeat: no-repeat;
 }
 .ref {
-	font: var(--fRef); color: inherit;
+	font: var(--fRef); color: var(--aSub);
 	text-decoration: none; cursor: pointer;
 	transition: color 0.2s
 }
@@ -162,6 +163,25 @@ item {
 }
 
 /* Local styles */
+.linkEmbed {
+	background: var(--aBgSub);
+	color: var(--aFont);
+	width: calc(16vmin + 16vh);
+	margin: 2vh auto; padding: 1vh 2vh;
+	border-radius: var(--rounding);
+	border: 1px solid var(--aFont)
+}
+.linkEmbed:hover { filter: brightness(0.95); border-color: var(--aSub) }
+.linkEmbed h2 { margin: 0 auto }
+.linkEmbed a { margin: 0.3vh auto }
+.linkEmbed img {
+	margin: 1.5vh auto;
+	display: block; width: 80%;
+	border-radius: var(--rounding);
+	border: 2px solid var(--aBorder)
+}
+.linkEmbed p { margin: 0 auto; text-align: left }
+
 .popup {
 	background: var(--aBgSub);
 	margin: auto; width: 90vmin;

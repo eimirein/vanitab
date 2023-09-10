@@ -414,7 +414,7 @@ function tile(url, name) {
 				<div class='tileThumb' style='background-image: url("https://s2.googleusercontent.com/s2/favicons?domain_url=${url}")'></div>
 				<div class='tileName nosel'>${name}</div>
 				<div class='fill tileControls'>
-					<i1><iX class='material-symbols-outlined' onclick="tile('${url}', 0)">close</iX></i1>
+					<i1><iX class='material-symbols-outlined' onclick="hide('tileGrid'); tile('${url}', 0)">close</iX></i1>
 					<i2><iX class='material-symbols-outlined' onclick="hide('tileGrid'); iframe('${url}')">fullscreen</iX></i2>
 					<i3><iX class='material-symbols-outlined' onclick="href('${url}', 1)">open_in_new</iX></i3>
 				</div>
@@ -427,7 +427,7 @@ function tile(url, name) {
 				<div class='tileThumb' style='background-image: url("https://s2.googleusercontent.com/s2/favicons?domain_url=${url}")'></div>
 				<div class='tileName nosel'>${name}</div>
 				<div class='fill tileControls'>
-					<i1><iX class='material-symbols-outlined' onclick="tile('${url}', 0)">close</iX></i1>
+					<i1><iX class='material-symbols-outlined' onclick="hide('tileGrid'); tile('${url}', 0)">close</iX></i1>
 					<i2><iX class='material-symbols-outlined' onclick="hide('tileGrid'); iframe('${url}')">fullscreen</iX></i2>
 					<i3><iX class='material-symbols-outlined' onclick="href('${url}', 1)">open_in_new</iX></i3>
 				</div>
@@ -438,7 +438,7 @@ function tile(url, name) {
 	else if (name === 0) { // Remove an entry from the list
 		delete settings.tiles[url]
 		rm(url); ls('settings', settings)
-		hide('tileGrid'); wait(200, "show('tileGrid')")
+		wait(400, "show('tileGrid')")
 	}
 	else { // Add new entry to the list
 		settings.tiles[url] = name

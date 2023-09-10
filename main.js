@@ -220,7 +220,7 @@ function langs_Userset() {
 		emi('tileName').placeholder = 'Имя закладки'
 		emi('tileUrl').placeholder = 'Адрес закладки (URL)'
 		
-		pattern('font', 'Montserrat')
+		pattern('font', 'NotoSans')
 	} else { pattern('font', 'NotoSansJP') }
 
 	twemojiParse()

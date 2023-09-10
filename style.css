@@ -4,8 +4,8 @@
 	src: url('assets/fonts/NotoSansJP.ttf')
 }
 @font-face {
-	font-family: 'Montserrat';
-	src: url('assets/fonts/Montserrat.ttf')
+	font-family: 'NotoSans';
+	src: url('assets/fonts/NotoSans.ttf')
 }
 @font-face {
 	font-family: 'Inconsolata';
@@ -128,7 +128,7 @@ input { white-space: nowrap }
 	background: var(--aBg);
 	padding: 0.75em 0; height: 1em;
 	color: inherit; font: var(--fMain);
-	width: 60%
+	width: 65%
 }
 .c {
 	background: var(--aBg); color: var(--aFont);
@@ -189,9 +189,10 @@ item {
 	box-shadow: 0 1vh 5vmin #0002
 }
 .popup msg {
-	width: 70%; height: 7em;
+	width: 80%; height: 7em;
 	border-radius: var(--rounding)
 }
+.popup input { width: 80% }
 .popup .btn {
 	background: var(--aBg)
 }
@@ -321,13 +322,13 @@ field {
 }
 field div {
 	margin: auto; transition: 0.2s;
-	width: 30%; height: 2.5em;
+	width: 35%; height: 2.5em;
 	background: var(--aBorder);
 }
 field div:hover { background: var(--aBgHov); color: var(--aFontHov) }
 .btn {
 	margin: auto; transition: 0.2s;
-	width: 40%; height: 2.5em;
+	width: 30%; height: 2.5em;
 	border-radius: calc(var(--rounding) / 2);
 	background: var(--aBorder);
 	padding: 0.2em 0.5em

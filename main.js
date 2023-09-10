@@ -37,6 +37,12 @@ async function wait(ms, str) {
 	await new Promise(resolve => setTimeout(resolve, ms))
 	eval(str)
 }
+// Copy text from the selected input
+function copy(id) {
+	const em = emi(id); em.select()
+	em.setSelectionRange(0, 99999)
+	navigator.clipboard.writeText(em.value)
+}
 // Print any data in the console and the element with id ["console"]
 function print(...data) {
 	let em = emi('console')
@@ -191,6 +197,7 @@ function langs_Userset() {
 	if (lang=='en') {
 		if (emi('lang')) { emi('lang').innerHTML = 'English' }
 		for (let v of classes('saveBtn')) { v.innerHTML = 'Save' }
+		for (let v of classes('copyBtn')) { v.innerHTML = 'Copy' }
 		for (let v of classes('loadBtn')) { v.innerHTML = 'Apply' }
 		emi('tileName').placeholder = 'Bookmark name'
 		emi('tileUrl').placeholder = 'Bookmark address (URL)'
@@ -199,6 +206,7 @@ function langs_Userset() {
 	if (lang=='jp') {
 		if (emi('lang')) { emi('lang').innerHTML = '日本語' }
 		for (let v of classes('saveBtn')) { v.innerHTML = '保存する' }
+		for (let v of classes('copyBtn')) { v.innerHTML = 'コピー' }
 		for (let v of classes('loadBtn')) { v.innerHTML = '応募する' }
 		emi('tileName').placeholder = 'ブックマーク名'
 		emi('tileUrl').placeholder = 'ブックマークアドレス（URL）'
@@ -207,6 +215,7 @@ function langs_Userset() {
 	if (lang=='ru') {
 		if (emi('lang')) { emi('lang').innerHTML = 'Русский' }
 		for (let v of classes('saveBtn')) { v.innerHTML = 'Сохранить' }
+		for (let v of classes('copyBtn')) { v.innerHTML = 'Копировать' }
 		for (let v of classes('loadBtn')) { v.innerHTML = 'Применить' }
 		emi('tileName').placeholder = 'Имя закладки'
 		emi('tileUrl').placeholder = 'Адрес закладки (URL)'

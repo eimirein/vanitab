@@ -128,7 +128,7 @@ input { white-space: nowrap }
 	background: var(--aBg);
 	padding: 0.75em 0; height: 1em;
 	color: inherit; font: var(--fMain);
-	width: 70%
+	width: 60%
 }
 .c {
 	background: var(--aBg); color: var(--aFont);
@@ -327,7 +327,7 @@ field div {
 field div:hover { background: var(--aBgHov); color: var(--aFontHov) }
 .btn {
 	margin: auto; transition: 0.2s;
-	width: 30%; height: 2.5em;
+	width: 40%; height: 2.5em;
 	border-radius: calc(var(--rounding) / 2);
 	background: var(--aBorder);
 	padding: 0.2em 0.5em

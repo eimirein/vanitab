@@ -438,7 +438,6 @@ function tile(url, name) {
 	else if (name === 0) { // Remove an entry from the list
 		delete settings.tiles[url]
 		rm(url); ls('settings', settings)
-		wait(400, "show('tileGrid')")
 	}
 	else { // Add new entry to the list
 		settings.tiles[url] = name

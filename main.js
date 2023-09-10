@@ -32,6 +32,11 @@ function fullscreen() {
 }
 // Reload page
 function R() { location.reload() }
+// Execute js from string after a cooldown
+async function wait(ms, str) {
+	await new Promise(resolve => setTimeout(resolve, ms))
+	eval(str)
+}
 // Print any data in the console and the element with id ["console"]
 function print(...data) {
 	let em = emi('console')
@@ -424,6 +429,7 @@ function tile(url, name) {
 	else if (name === 0) { // Remove an entry from the list
 		delete settings.tiles[url]
 		rm(url); ls('settings', settings)
+		hide('tileGrid'); wait(200, "show('tileGrid')")
 	}
 	else { // Add new entry to the list
 		settings.tiles[url] = name

@@ -51,18 +51,11 @@ body {
 	height: var(--deviceHeight);
 	width: 100vw; color: var(--aFont);
 	background-color: var(--aBg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
 	overscroll-behavior-x: none;
 	overflow: hidden; overflow-x: hidden;
 	overflow-y: scroll; z-index: -10;
 	backface-visibility: hidden;
 	position: relative; margin: 0; padding: 0;
-	padding: env(safe-area-inset-top, 20px) 
-	env(safe-area-inset-right, 20px) 
-	env(safe-area-inset-bottom, 0px) 
-	env(safe-area-inset-left, 20px);
 	background-image: url('assets/bg.jpeg')
 }
 sel { color: var(--a) }
